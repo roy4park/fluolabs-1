@@ -1,0 +1,14 @@
+from drop import Drop
+
+drops = []
+
+def setup():
+    size(640, 360)
+    for i in range(500):
+        drops.append(Drop())
+
+def draw() :
+    background(230, 230, 250)
+    for i in range(len(drops)): 
+        drops[i].fall()
+        drops[i].display() 
