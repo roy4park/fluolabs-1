@@ -1,0 +1,64 @@
+from letter import Letter
+
+letters = []
+
+def setup():
+    global maxSize
+    size(600,600)
+    background(220)
+    textSize(32)
+    maxSize = 3
+    
+def draw():
+    
+    background(220)
+
+    for i in range (len(letters)):
+        letters[i].display()
+        letters[i].update()
+ 
+        
+    fill(0)
+    text(str(len(letters)), width - 100, 32)
+    
+    while(len(letters) < maxSize):
+        addRandomLetter()
+        
+def keyTyped():
+    if (key == ' '):
+        del letters[:]
+    else:
+        addLetter(key)
+            
+def addLetter(ch):
+    temp = Letter(ch, random(width), 0, color(random(256), random(256), random(256)))
+    letters.append(temp)
+    print(temp.ch, ord(temp.ch), unichr(ord(temp.ch)))
+    
+def addRandomLetter():
+    temp = Letter(unichr(97 + random(26)), random(width), 0, color(random(256), random(256), random(256)))
+    letters.append(temp)
+    
+    
+    
+    LETTEr
+ class Letter():
+    def __init__(self, ch, x, y, col):
+        self.ch = ch
+        self.x = x
+        self.y = y
+        self.col = col
+        
+    def display(self):
+        fill(self.col)
+        text(self.ch, self.x, self.y)
+        
+    def update(self):
+        self.y += 1
+        if (self.y > height):
+            self.y = 0        
+    
+    
+    
+    
+    
